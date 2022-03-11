@@ -3,12 +3,13 @@ pipeline {
 	stages{
 		stage('Build Image'){
 			steps{
-			sh 'docker build -t gcr.io/lbg-210222/api-graham:build-$BUILD_NUMBER .'
+			sh 'docker build -t gcr.io/lbg-210222/api-graham:latest -t gcr.io/lbg-210222/api-graham:build-$BUILD_NUMBER .'
 			}
 		}
 		stage('Push to Dockerhub'){
 			steps{
             sh 'docker push gcr.io/lbg-210222/api-graham:build-$BUILD_NUMBER'
+            sh 'docker push gcr.io/lbg-210222/api-graham:latest
 			}
 		}
 		stage('Reapply '){
@@ -20,7 +21,8 @@ pipeline {
 		}
         stage('Cleanup'){
 			steps{
-            sh 'docker system prune'
+            sh 'docker rmi gcr.io/lbg-210222/api-graham:latest'
+            sh 'docker rmi gcr.io/lbg210222/ap-graham:build-$BUILD_NUMBER'
 			}
 		}
     }
