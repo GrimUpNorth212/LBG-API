@@ -3,12 +3,12 @@ pipeline {
 	stages{
 		stage('Build Image'){
 			steps{
-			sh 'docker build -t stratcastor/api:build-$BUILD_NUMBER .'
+			sh 'docker build -t grimupnorth/myapp:build-$BUILD_NUMBER .'
 			}
 		}
 		stage('Push to Dockerhub'){
 			steps{
-            sh 'docker push stratcastor/api:build-$BUILD_NUMBER'
+            sh 'docker push grimupnorth/myapp:build-$BUILD_NUMBER'
 			}
 		}
 		stage('Reapply '){
