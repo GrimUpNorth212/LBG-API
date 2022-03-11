@@ -33,6 +33,6 @@ spec:
     spec:
       containers:
       - name: api
-        image: stratcastor/api:latest
+        image: grimupnorth/myapp:1
         ports:
         - containerPort: 4000
