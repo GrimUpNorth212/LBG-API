@@ -33,6 +33,6 @@ spec:
     spec:
       containers:
       - name: api
-        image: grimupnorth/myapp:1
+        image: gcr.io/lbg-210222/api-graham:latest
         ports:
         - containerPort: 4000
